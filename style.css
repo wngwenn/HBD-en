@@ -1,0 +1,232 @@
+/* === BACKGROUND DENGAN GRADIENT BERGERAK DAN BINTANG === */
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Courier New', monospace;
+  color: #e0e0e0;
+  text-align: center;
+  overflow-x: hidden;
+  background: 
+    radial-gradient(circle at 70% 30%, #6925ac33 0%, transparent 70%),
+    radial-gradient(circle at 20% 80%, #ad211533 0%, transparent 70%),
+    linear-gradient(120deg, #18181b 0%, #232526 100%);
+  background-blend-mode: screen, lighten, normal;
+  animation: emoBg 18s ease-in-out infinite alternate;
+  position: relative;
+}
+
+@keyframes emoBg {
+  0% {
+    background-position: 0% 50%, 100% 0%, 0% 0%;
+  }
+  100% {
+    background-position: 100% 50%, 0% 100%, 100% 100%;
+  }
+}
+
+@keyframes dreamyBg {
+  0% {
+    background-position: 0% 50%, 100% 0%, 50% 100%, 0% 0%;
+  }
+  100% {
+    background-position: 100% 50%, 0% 100%, 80% 0%, 100% 100%;
+  }
+}
+
+.container {
+  padding: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+h1.glitch {
+  font-size: 2.5em;
+  color: #5e15a2;
+  animation: glitch 1s infinite;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes glitch {
+  0%, 100% { transform: skew(0deg); }
+  20% { transform: skew(-1deg); }
+  40% { transform: translateX(2px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateY(1px); }
+}
+
+#photoContainer img {
+  width: 200px;
+  border-radius: 12px;
+  margin: 20px;
+  animation: drop 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes drop {
+  to { transform: translateY(0); opacity: 1; }
+  from { transform: translateY(-100px); opacity: 0; }
+}
+
+button {
+  background: #350338;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  margin-top: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 2;
+  position: relative;
+}
+button:hover {
+  transform: scale(1.1);
+}
+
+/* === BINTANG JATUH / BACKGROUND STARS === */
+.stars {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.07;
+  animation: starsAnim 60s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes starsAnim {
+  from { background-position: 0 0; }
+  to { background-position: -500px 1000px; }
+}
+
+/* === KUE === */
+.cake {
+  margin: 40px auto;
+  position: relative;
+  width: 120px;
+  height: 150px;
+}
+.plate {
+  width: 140px;
+  height: 20px;
+  background: #3d0e3e;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 0;
+  left: -10px;
+}
+.cake-body {
+  width: 120px;
+  height: 100px;
+  background: rgb(143, 113, 152);
+  border-radius: 10px 10px 0 0;
+  position: relative;
+  top: 30px;
+}
+.frosting {
+  width: 100%;
+  height: 20px;
+  background: white;
+  border-radius: 10px;
+  position: absolute;
+  top: -10px;
+}
+.candle {
+  width: 10px;
+  height: 30px;
+  background: rgb(23, 1, 33);
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+.flame {
+  width: 12px;
+  height: 12px;
+  background: orange;
+  border-radius: 50%;
+  position: absolute;
+  top: -12px;
+  left: -1px;
+  animation: flicker 0.2s infinite;
+  box-shadow: 0 0 10px orange;
+}
+@keyframes flicker {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(0.9); opacity: 1; }
+}
+
+.cake-text {
+  position: absolute;
+  bottom: 10px;         /* Menempel di bawah cake-body */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  font-size: 1em;
+  color: #7f00ff;
+  font-weight: bold;
+  letter-spacing: 1px;
+  z-index: 3;
+  text-shadow: 1px 1px 4px #fff, 0 0 8px #b983ff;
+  pointer-events: none;
+}
+
+/* === QUOTE === */
+.quote-box {
+  font-style: italic;
+  margin-top: 30px;
+  color: #ccc;
+  cursor: pointer;
+  animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 14px;
+  color: #8a2f08;
+  animation: flicker 1s infinite alternate;
+  position: relative;
+  z-index: 2;
+}
+
+/* === EMOTE JATUH JATUH === */
+.emojiRain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.emoji {
+  position: absolute;
+  font-size: 24px;
+  animation: fall linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
